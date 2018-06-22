@@ -23,9 +23,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/mdbootstrap/css/mdb.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+           
             ],
-            "scripts": []
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/mdbootstrap/js/mdb.js",
+              "node_modules/mdbootstrap/js/jquery-3.3.1.min.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/mdbootstrap/js/popper.min.js"]
           },
           "configurations": {
             "production": {

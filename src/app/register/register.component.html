@@ -1,0 +1,96 @@
+<br>
+
+<div class="row">
+
+    <div class="input-group mb-3 col-md-3" style="padding: 20px;">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-alt"></i></span>
+      </div>
+      <input [(ngModel)]="nameUser" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+    </div>
+    
+    <div class="input-group mb-3 col-md-3" style="padding: 20px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-signature"></i></span>
+        </div>
+        <input [(ngModel)]="lastNameUser" type="text" class="form-control" placeholder="Last name" aria-label="Last name" aria-describedby="basic-addon1">
+      </div>
+
+    
+
+        <div class="form-group  mb-3 col-md-3" style="display: block ; padding: 20px;">
+           
+            <select class="form-control" id="exampleSelect1">
+              <option *ngFor="let item of Position; let i = index"  >{{item.name}}</option>
+   
+            </select>
+          </div>
+      
+      <button type="button" class="btn btn-success mb-3 col-md-2" (click)="addUsers()" style="height: 50px; margin-top: 10px;"><i class="far fa-save"></i> Save user</button>
+    </div>
+    <hr>
+    <br>  
+<h1> List </h1>
+    <br>  
+    <hr>
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Position</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of users; let i = index">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.lastname}}</td>
+        <td>{{item.Position}}</td>
+        <td class="d-flex justify-content-center"><button type="button" class="btn  btn-info"  (click)="openBackDropCustomClass(content,i,item.name,item.lastname,item.Position)" style="margin: 10px;"><i class="fas fa-eye"></i></button> <button type="button" class="btn btn-danger"  (click)="deleteUsers(i)" style="margin: 10px"><i class="fas fa-trash-alt"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">User Information</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <div class="input-group mb-3 " >
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-alt"></i></span>
+              </div>
+              <input disabled [(ngModel)]="nameUser" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+            </div>
+            
+            <div class="input-group mb-3" >
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-signature"></i></span>
+                </div>
+                <input disabled [(ngModel)]="lastNameUser" type="text" class="form-control" placeholder="Last name" aria-label="Last name" aria-describedby="basic-addon1">
+              </div>
+        
+                <div class="form-group  mb-3 " >
+                   
+                    <select disabled class="form-control" id="exampleSelect1">
+                      <option *ngFor="let item of Position; let i = index">{{item.name}}</option>
+                    </select>
+                  </div>
+       
+      </div>
+      <div class="modal-footer">
+         
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        <button type="button" class="btn btn-success" (click)="c('Close click')">Change</button>
+      </div>
+    </ng-template>

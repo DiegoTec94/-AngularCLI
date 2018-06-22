@@ -1,0 +1,37 @@
+<div class="container" style="padding-top: 10%">
+  <div class="row">
+    <div class="col-md-4"></div>
+
+    <div class="card text-white bg-info mb-3 col-md-4" style="max-width: 18rem;">
+      <div class="card-header" style="text-align: center;">Neoris FSW</div>
+      <div class="card-body">
+        <div class="d-flex justify-content-center outter">  <img src="http://via.placeholder.com/80x80" alt="name" class="rounded-circle img-fluid "/> </div>
+        <br>
+        <div class="d-flex flex-row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-secret"></i></span>
+                </div>
+                <input type="text" class="form-control"  [(ngModel)]="userName" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+        </div>
+        <br>
+        <div class="d-flex flex-row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" class="form-control" [(ngModel)]="userPassword" placeholder="Password" aria-label="password" aria-describedby="basic-addon1">
+              </div>
+        </div>
+       <br>
+        <div class="d-flex justify-content-center">
+            <button (click)="Showinformation()" type="button" class="btn btn-success" style="widows: 100%;">Login</button>
+        </div>
+       
+      </div>
+    </div>
+
+    <div class="col-md-4"></div>
+  </div>
+</div>  
