@@ -21,13 +21,22 @@
         <div class="form-group  mb-3 col-md-3" style="display: block ; padding: 20px;">
            
             <select class="form-control" id="exampleSelect1">
-              <option *ngFor="let item of Position; let i = index"  >{{item.name}}</option>
+              <option *ngFor="let item of positionComponent; let i = index"  >{{item.name}}</option>
    
             </select>
           </div>
       
       <button type="button" class="btn btn-success mb-3 col-md-2" (click)="addUsers()" style="height: 50px; margin-top: 10px;"><i class="far fa-save"></i> Save user</button>
+    
+    
+    
+    
+    
+    
     </div>
+ 
+ 
+ 
     <hr>
     <br>  
 <h1> List </h1>
@@ -45,7 +54,7 @@
         <th scope="col"></th>
       </tr>
     </thead>
-    <tbody *ngFor="let item of users; let i = index">
+    <tbody *ngFor="let item of userComponent; let i = index">
       <tr>
         <th scope="row">{{i+1}}</th>
         <td>{{item.name}}</td>
@@ -91,6 +100,6 @@
       <div class="modal-footer">
          
         <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
-        <button type="button" class="btn btn-success" (click)="c('Close click')">Change</button>
+        <button type="button" class="btn btn-success" *ngFor="let item of indexNew; let i = index"  routerLink="/Update/{{item}}" (click)="c('Close click')">Change</button>
       </div>
     </ng-template>

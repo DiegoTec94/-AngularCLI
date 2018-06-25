@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../user.service';
+import { PositionService } from '../position.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -21,25 +24,11 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class RegisterComponent implements OnInit {
   
-  Position = [{id:1 , name:"Practicante"},
-  {id:2 , name:"Analista"},
-  {id:3 , name:"Desarrollador"},
-  {id:4 , name:"Desarrollador -O"},
-  {id:5 , name:"Desarrollador -A"},
-];
-
   closeResult: string;
   nameUser :string;
   lastNameUser :string;
   positionUser :string;
   index :number;
-
-  users = [
-    {name:"Diego",lastname:"Serna", Position:this.Position[4].name},
-    {name:"David",lastname:"Enrique", Position:this.Position[4].name},
-    {name:"Juan",lastname:"Salazar", Position:this.Position[2].name}
-  ];
- 
 
     addUsers(){
 
@@ -49,13 +38,15 @@ export class RegisterComponent implements OnInit {
       };
 
       if(this.index != null){
-      this.users[this.index] = newObject;          
+    //this.users[this.index] = newObject;  
+      this.userService.updateUserIndex(this.index,newObject);   
       this.index=null;
       this.nameUser="";
       this.lastNameUser=null;
       }
       else{
-      this.users.push(newObject);
+    //this.users.push(newObject);
+      this.userService.addUsers(newObject);
       this.nameUser="";
       this.lastNameUser=null;
       this.index=null;
@@ -65,7 +56,7 @@ export class RegisterComponent implements OnInit {
 
     deleteUsers(index){
       
-      this.users.splice(index,1);
+    this.userService.deleteUserIndex(index);
      
     }
     
@@ -74,19 +65,30 @@ export class RegisterComponent implements OnInit {
       this.lastNameUser=ItemCalft;
       this.index = i;
     }
-
+    
+    indexNew = [];
     openBackDropCustomClass(content,i,username,userlastname,userposition) {
       this.nameUser=username;
       this.lastNameUser=userlastname;
       this.positionUser=userposition;
       this.index = i;
+      this.indexNew[0] = i;
       this.modalService.open(content, {backdropClass: 'light-blue-backdrop',  centered: true});
     }
+   // updateData(){
+     // this.router.navigateByUrl('Update/'+this.index);
+   // }
   
+    //#region 
+    userComponent = [];
+    positionComponent = [];
+   
+    //#endregion
 
-
-
-  constructor(private modalService: NgbModal) { }
+  constructor(public router: Router,private modalService: NgbModal, public userService : UserService, public positionService :PositionService) {
+    this.userComponent = userService.getUsers();
+    this.positionComponent = positionService.getPosition();
+    }
 
   ngOnInit() {
   }

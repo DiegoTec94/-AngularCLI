@@ -9,14 +9,16 @@ import { RegisterComponent } from './register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { AgmCoreModule } from '@agm/core';  
+import { AgmCoreModule } from '@agm/core';
+import { UpdateComponent } from './update/update.component';  
 
 const appRoutes : Routes = [
   {path: '', component : LoginComponent},
   {path: 'Login', component : LoginComponent},
   {path: 'Home', component : HomeComponent},
   {path: 'About', component : AboutComponent },
-  {path: 'Register', component : RegisterComponent }
+  {path: 'Register', component : RegisterComponent },
+  {path: 'Update/:id', component : UpdateComponent }
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const appRoutes : Routes = [
     HomeComponent,
     LoginComponent,
     AboutComponent,
-    RegisterComponent
+    RegisterComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
